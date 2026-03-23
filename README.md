@@ -36,7 +36,7 @@ Kakao Map API를 활용한 위치 기반 맛집 탐색 웹 서비스
 
 ## 📞 Contact
 
-- 📧 your@email.com
+- 📧 jun0314a@naver.com
 - 💻 https://github.com/jun0314a
 
 ---
