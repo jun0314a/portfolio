@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -15,106 +14,56 @@ export default function Home() {
   return (
     <main className="bg-[#f9fbff] text-gray-800 min-h-screen">
 
-      {/* 🔥 상단 비주얼 */}
+      {/* 🔥 상단 */}
       <section className="h-[45vh] flex flex-col items-center justify-center text-center bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-500">
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          whileHover={{ scale: 1.05, y: -5 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          className="text-5xl font-bold tracking-widest text-white"
-        >
+        <h1 className="text-5xl font-bold tracking-widest text-white">
           Portfolio
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          whileHover={{ scale: 1.05 }}
-          className="text-sm mt-2 text-blue-100 font-medium"
-        >
+        <p className="text-sm mt-2 text-blue-100 font-medium">
           FRONTEND DEVELOPER
-        </motion.p>
+        </p>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          whileHover={{ scale: 1.05 }}
-          className="mt-6 text-lg text-white/90"
-        >
+        <p className="mt-6 text-lg text-white/90">
           사용자 경험을 설계하는 프론트엔드 개발자
-        </motion.p>
+        </p>
 
       </section>
 
-      {/* 🔥 프로필 영역 */}
-      <section className="max-w-4xl mx-auto px-6 py-10">
+      {/* 🔥 프로필 */}
+      <section className="max-w-4xl mx-auto px-6 py-10 text-center">
 
-        <div className="flex items-start gap-6 mb-6">
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 3 }}
-            className="w-20 h-20 bg-blue-100 rounded-full"
-          />
+        <div className="flex flex-col items-center mb-6">
+          <div className="w-20 h-20 bg-blue-100 rounded-full mb-4" />
 
-          <div>
-            <motion.h2
-              whileHover={{ x: 5 }}
-              className="text-2xl font-semibold"
-            >
-              김성준
-            </motion.h2>
+          <h2 className="text-2xl font-semibold">
+            김성준
+          </h2>
 
-            {/* 🔥 Contact */}
-            <div className="flex flex-wrap gap-4 mt-2 text-sm text-blue-600">
-
-              <a
-                href="tel:01047943225"
-                className="hover:text-blue-800 transition"
-              >
-                📞 010-4794-3225
-              </a>
-
-              <a
-                href="mailto:jun0314a@naver.com"
-                className="hover:text-blue-800 transition"
-              >
-                ✉️ jun0314a@naver.com
-              </a>
-
-              <a
-                href="https://github.com/jun0314a"
-                target="_blank"
-                className="hover:text-blue-800 transition"
-              >
-                💻 GitHub
-              </a>
-            </div>
-
-            <motion.p
-              whileHover={{ x: 5 }}
-              className="text-gray-500 mt-2"
-            >
-              사용자 중심의 인터랙티브 웹을 만드는 개발자입니다.
-            </motion.p>
+          {/* Contact */}
+          <div className="flex flex-wrap justify-center gap-4 mt-2 text-sm text-blue-600">
+            <a href="tel:01047943225">📞 010-4794-3225</a>
+            <a href="mailto:jun0314a@naver.com">✉️ jun0314a@naver.com</a>
+            <a href="https://github.com/jun0314a" target="_blank">
+              💻 GitHub
+            </a>
           </div>
+
+          <p className="text-gray-500 mt-3">
+            사용자 중심의 인터랙티브 웹을 만드는 개발자입니다.
+          </p>
         </div>
 
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="bg-blue-50 p-4 rounded-lg text-sm text-gray-600 border border-blue-100"
-        >
+        <div className="bg-blue-50 p-4 rounded-lg text-sm text-gray-600 border border-blue-100">
           React와 Next.js 기반으로 직관적인 UI와 부드러운 사용자 경험을 구현합니다.
-        </motion.div>
+        </div>
 
-        {/* 구분선 */}
         <div className="w-full h-px bg-blue-100 my-10" />
 
       </section>
 
-      {/* 🔥 버튼 네비게이션 */}
+      {/* 🔥 버튼 */}
       <section className="flex flex-col items-center pb-20">
 
         <p className="text-blue-500 mb-6 font-medium">
@@ -124,20 +73,13 @@ export default function Home() {
         <div className="flex gap-4 flex-wrap justify-center">
 
           {buttons.map((btn) => (
-            <motion.button
+            <button
               key={btn.label}
               onClick={() => router.push(btn.path)}
-              whileHover={{
-                scale: 1.1,
-                backgroundColor: "#2563eb",
-                color: "#fff",
-              }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 200 }}
-              className="px-7 py-3 rounded-full border border-blue-500 text-blue-600 font-medium hover:shadow-lg"
+              className="px-7 py-3 rounded-full border border-blue-500 text-blue-600 font-medium hover:bg-blue-600 hover:text-white transition"
             >
               {btn.label}
-            </motion.button>
+            </button>
           ))}
 
         </div>
