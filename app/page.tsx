@@ -1,169 +1,152 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [showIntro, setShowIntro] = useState(false);
-  const [activeProject, setActiveProject] = useState<string | null>(null);
+  const router = useRouter();
 
-  const toggleProject = (project: string) => {
-    setActiveProject(activeProject === project ? null : project);
-  };
+  const buttons = [
+    { label: "About", path: "/about" },
+    { label: "Projects", path: "/projects" },
+    { label: "Experience", path: "/experience" },
+  ];
 
   return (
-    <main className="bg-[#f9f9f9] text-gray-800 min-h-screen px-6 py-20 space-y-32">
+    <main className="bg-[#f9fbff] text-gray-800 min-h-screen">
 
-      {/* 🏠 Hero + 네임카드 */}
-<section className="text-center space-y-8">
+      {/* 🔥 상단 비주얼 */}
+      <section className="h-[45vh] flex flex-col items-center justify-center text-center bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-500">
 
-  <h1 className="text-5xl font-bold">김성준</h1>
-  <p className="text-gray-500 text-lg">Frontend Developer</p>
-
-  {/* 📇 네임카드 */}
-  <div className="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-sm">
-    
-    <div className="space-y-2 text-gray-600 text-sm">
-      <p>📍 Seoul, Korea</p>
-      <p>📞 010-4794-3225</p>
-      <p>✉️ jun0314a@naver.com</p>
-      <p>💻 github.com/jun0314a</p>
-    </div>
-
-  </div>
-
-</section>
-      {/* 👨‍💻 About */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        className="max-w-2xl mx-auto text-center"
-      >
-        <h2 className="text-2xl font-semibold mb-6">About</h2>
-        <p className="text-gray-600 leading-relaxed">
-          아무거나 아무거나아무거나아무거나
-        </p>
-      </motion.section>
-
-      {/* 📝 자기소개서 */}
-      <section className="text-center">
-        <button
-          onClick={() => setShowIntro(!showIntro)}
-          className="px-6 py-3 bg-black text-white rounded-full hover:scale-105 transition"
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.05, y: -5 }}
+          transition={{ type: "spring", stiffness: 200 }}
+          className="text-5xl font-bold tracking-widest text-white"
         >
-          {showIntro ? "닫기" : "자기소개서 보기"}
-        </button>
+          Portfolio
+        </motion.h1>
 
-        {showIntro && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-8 max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-sm text-left"
-          >
-            <p className="text-gray-700 leading-relaxed">
-              열심히 할게요.
-              <br /><br />
-              모두 화이팅
-              <br /><br />
-              화이팅입니다
-            </p>
-          </motion.div>
-        )}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          whileHover={{ scale: 1.05 }}
+          className="text-sm mt-2 text-blue-100 font-medium"
+        >
+          FRONTEND DEVELOPER
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          whileHover={{ scale: 1.05 }}
+          className="mt-6 text-lg text-white/90"
+        >
+          사용자 경험을 설계하는 프론트엔드 개발자
+        </motion.p>
+
       </section>
 
-      {/* 💼 Experience */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="max-w-3xl mx-auto"
-      >
-        <h2 className="text-2xl font-semibold mb-8 text-center">
-          Experience
-        </h2>
-        
+      {/* 🔥 프로필 영역 */}
+      <section className="max-w-4xl mx-auto px-6 py-10">
 
-        <div className="bg-white p-6 rounded-2xl shadow-sm">
-          <h3 className="font-semibold">대학</h3>
-          <p className="text-gray-500 text-sm">2020 - 2026</p>
-          <p className="mt-2 text-gray-600">
-            컴퓨터공학과 재학
-          </p>
-        </div>
+        <div className="flex items-start gap-6 mb-6">
+          <motion.div
+            whileHover={{ scale: 1.1, rotate: 3 }}
+            className="w-20 h-20 bg-blue-100 rounded-full"
+          />
 
-        <div className="bg-white p-6 rounded-2xl shadow-sm">
-          <h3 className="font-semibold">군대</h3>
-          <p className="text-gray-500 text-sm">2021 - 2022</p>
-          <p className="mt-2 text-gray-600">
-            군대임다
-          </p>
-        </div>
-
-        <div className="bg-white p-6 rounded-2xl shadow-sm">
-          <h3 className="font-semibold">인턴</h3>
-          <p className="text-gray-500 text-sm">2026 - 현재</p>
-          <p className="mt-2 text-gray-600">
-            인턴
-          </p>
-        </div>
-      </motion.section>
-
-      {/* 🛠️ Skills */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
-        className="max-w-3xl mx-auto text-center"
-      >
-        <h2 className="text-2xl font-semibold mb-6">Skills</h2>
-
-        <div className="flex flex-wrap justify-center gap-3">
-          {["HTML", "CSS", "JavaScript", "React", "Next.js"].map((skill) => (
-            <span
-              key={skill}
-              className="px-4 py-2 bg-white rounded-full shadow-sm text-sm hover:scale-105 transition"
+          <div>
+            <motion.h2
+              whileHover={{ x: 5 }}
+              className="text-2xl font-semibold"
             >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </motion.section>
+              김성준
+            </motion.h2>
 
-      {/* 🛠️ Projects */}
-      <section className="max-w-4xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-12 text-center">
-          Selected Works
-        </h2>
+            {/* 🔥 Contact */}
+            <div className="flex flex-wrap gap-4 mt-2 text-sm text-blue-600">
 
-        <div className="space-y-6">
-
-          <motion.div
-            whileHover={{ scale: 1.03 }}
-            onClick={() => toggleProject("map")}
-            className="bg-white p-8 rounded-3xl shadow-sm cursor-pointer"
-          >
-            <h3 className="text-xl font-semibold">Map Food Project</h3>
-            <p className="mt-3 text-gray-500">
-              위치 기반 맛집 탐색 서비스
-            </p>
-
-            {activeProject === "map" && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                className="mt-6 border-t pt-4 text-gray-600"
+              <a
+                href="tel:01047943225"
+                className="hover:text-blue-800 transition"
               >
-                <p>지도 기반 인터랙티브 웹 서비스입니다.</p>
-                <p className="mt-2 text-sm text-gray-400">
-                  React / Next.js / Kakao Map API
-                </p>
-              </motion.div>
-            )}
-          </motion.div>
+                📞 010-4794-3225
+              </a>
+
+              <a
+                href="mailto:jun0314a@naver.com"
+                className="hover:text-blue-800 transition"
+              >
+                ✉️ jun0314a@naver.com
+              </a>
+
+              <a
+                href="https://github.com/jun0314a"
+                target="_blank"
+                className="hover:text-blue-800 transition"
+              >
+                💻 GitHub
+              </a>
+            </div>
+
+            <motion.p
+              whileHover={{ x: 5 }}
+              className="text-gray-500 mt-2"
+            >
+              사용자 중심의 인터랙티브 웹을 만드는 개발자입니다.
+            </motion.p>
+          </div>
+        </div>
+
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          className="bg-blue-50 p-4 rounded-lg text-sm text-gray-600 border border-blue-100"
+        >
+          React와 Next.js 기반으로 직관적인 UI와 부드러운 사용자 경험을 구현합니다.
+        </motion.div>
+
+        {/* 구분선 */}
+        <div className="w-full h-px bg-blue-100 my-10" />
+
+      </section>
+
+      {/* 🔥 버튼 네비게이션 */}
+      <section className="flex flex-col items-center pb-20">
+
+        <p className="text-blue-500 mb-6 font-medium">
+          궁금한 내용을 선택해보세요
+        </p>
+
+        <div className="flex gap-4 flex-wrap justify-center">
+
+          {buttons.map((btn) => (
+            <motion.button
+              key={btn.label}
+              onClick={() => router.push(btn.path)}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#2563eb",
+                color: "#fff",
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="px-7 py-3 rounded-full border border-blue-500 text-blue-600 font-medium hover:shadow-lg"
+            >
+              {btn.label}
+            </motion.button>
+          ))}
 
         </div>
       </section>
+
+      {/* 🔥 footer */}
+      <footer className="text-center text-sm text-gray-400 py-10 border-t border-blue-100">
+        © 2026 김성준 Portfolio
+      </footer>
 
     </main>
   );
